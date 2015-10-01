@@ -17,7 +17,7 @@ CONSUMER_SECRET="Jfj6qOPi6kp3GK11LIDoxnZQeNBK8kNyQvsTrOnHcRcTPxJiCj"
 t = Twitter(auth=OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
 links = []
 tweets = t.statuses.user_timeline(screen_name="rkahne")
-reg_ex_compiler = re.compile(r'\S+:\S+[^\u2026]')
+reg_ex_compiler = re.compile(r'https?:\S+[^\u2026]')
 
 for tweet in range(len(tweets)):
 	try:
@@ -30,6 +30,9 @@ for tweet in range(len(tweets)):
 		pass
 
 for _ in range(len(links)):
-	print("{}. {}".format(_,links[_]))
+	try:
+		print("{}. {}".format(_,links[_]))
+	except:
+		pass
 
 
