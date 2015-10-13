@@ -8,15 +8,15 @@ import urllib.request
 
 # FB_ACCESS_TOKEN = ""
 
-ACCESS_TOKEN=""
-ACCESS_SECRET=""
-CONSUMER_KEY=""
-CONSUMER_SECRET=""
+ACCESS_TOKEN="13332732-fetvSVLHreuBMi9tnDmag8trw2W85hRylYUNS1EyP"
+ACCESS_SECRET="mzfopDLGvNxUC1ScD65tBcoK4RBIeLHXdlUqXq3vs6oIG"
+CONSUMER_KEY="dMHU9UCytSzUPO9OdFH0OuQo5"
+CONSUMER_SECRET="Jfj6qOPi6kp3GK11LIDoxnZQeNBK8kNyQvsTrOnHcRcTPxJiCj"
 
 t = Twitter(auth=OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
 links = []
 tweets = t.statuses.user_timeline(screen_name="rkahne")
-reg_ex_compiler = re.compile(r'https?:\S+[^\u2026]')
+reg_ex_compiler = re.compile(r'\S+:\S+')
 
 for tweet in range(len(tweets)):
 	try:
