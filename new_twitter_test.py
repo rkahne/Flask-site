@@ -6,12 +6,12 @@ from bs4 import BeautifulSoup
 import re
 import urllib.request
 
-# FB_ACCESS_TOKEN = "CAACEdEose0cBAKF5J0iWFVKkmVgcdsvw3Y5g0Lu3kZAtRmaLXr0XUrXOi76zCnNRfufwdYmrl8YcNkLXYmRcb7yKPrJsZAdUWuDNmZAy7koKArRpqksMzWeEAusiZAH37Dr30Ji9Oy8So33jPVHu0hs6TlrMvvrR8NvjIEl2nLWXdQqlf8YwK7GACIZCII1EjVzS2cZAJrwCkMCfOz7o5M"
+# FB_ACCESS_TOKEN = ""
 
-ACCESS_TOKEN="13332732-fetvSVLHreuBMi9tnDmag8trw2W85hRylYUNS1EyP"
-ACCESS_SECRET="mzfopDLGvNxUC1ScD65tBcoK4RBIeLHXdlUqXq3vs6oIG"
-CONSUMER_KEY="dMHU9UCytSzUPO9OdFH0OuQo5"
-CONSUMER_SECRET="Jfj6qOPi6kp3GK11LIDoxnZQeNBK8kNyQvsTrOnHcRcTPxJiCj"
+ACCESS_TOKEN=""
+ACCESS_SECRET=""
+CONSUMER_KEY=""
+CONSUMER_SECRET=""
 
 
 t = Twitter(auth=OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
@@ -25,11 +25,13 @@ for tweet in range(len(tweets)):
 		get = urllib.request.urlopen(url)
 		html = get.read()
 		soup = BeautifulSoup(html, 'html.parser')
-		links.append(soup.find_all('title')[0])
+		title = soup.find_all('title')[0].encode('unicode-escape')
+		title = re.sub(b'</?title>',b'',title).decode('utf-8')
+		links.append((title, url))
 	except:
 		pass
 
 for _ in range(len(links)):
-	print("{}. {}".format(_,links[_]))
+	print("{}. {} ({})".format(_+1,links[_][0],links[_][1]))
 
 
