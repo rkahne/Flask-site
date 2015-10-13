@@ -6,22 +6,12 @@ from bs4 import BeautifulSoup
 import re
 import urllib.request
 
-<<<<<<< HEAD
 # FB_ACCESS_TOKEN = ""
 
 ACCESS_TOKEN=""
 ACCESS_SECRET=""
 CONSUMER_KEY=""
 CONSUMER_SECRET=""
-=======
-# FB_ACCESS_TOKEN = "..."
-
-ACCESS_TOKEN="..."
-ACCESS_SECRET="..."
-CONSUMER_KEY="..."
-CONSUMER_SECRET="..."
->>>>>>> origin/master
-
 
 t = Twitter(auth=OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
 links = []
@@ -41,13 +31,6 @@ for tweet in range(len(tweets)):
 		pass
 
 for _ in range(len(links)):
-<<<<<<< HEAD
 	print("{}. {} ({})".format(_+1,links[_][0],links[_][1]))
-=======
-	try:
-		print("{}. {}".format(_,links[_]))
-	except:
-		pass
->>>>>>> origin/master
 
 
