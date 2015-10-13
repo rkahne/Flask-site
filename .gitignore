@@ -42,6 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 co0lejej.0n0.txt
-.Include.*
-.Lib.*
-.Scripts.*
+Include/*
+Lib/*
+Scripts/*
